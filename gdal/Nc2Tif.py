@@ -3,9 +3,9 @@ from netCDF4 import Dataset
 from osgeo import gdal, osr
 
 # 1. 路径处理和变量定义
-rootDir = r'D:\data\nc'
-ncPath = rootDir + '\\china_gdfs.nc'
-tifPath = rootDir + '\\china_gdfs_tem.tif'
+rootDir = r'/Users/lzugis/Documents/ncdata'
+ncPath = rootDir + '/china_gdfs.nc'
+tifPath = '../out/china_gdfs_tem.tif'
 
 ncDataset = Dataset(ncPath)
 lat = ncDataset.variables['lat'][:]
