@@ -11,18 +11,14 @@ plt_np = np.zeros(shape=(len(filenames)*30, 30, 4))
 for i in range(len(filenames)):
     nep = Image.open(root + filenames[i])
     neppx = list(nep.getdata())
-    for k in range(len(neppx)):
-        for y in range(nep.size[1]):
-            for x in range(nep.size[0]):
-                for z in range(4):
-                    plt_np[30 * i + y, x, z] = neppx[y * nep.size[0] + x][z]
+    plt_np[30*i:30*i+nep.size[1],0:nep.size[0]] = np.array(neppx).flatten().reshape(nep.size[1],nep.size[0],4)
     plt_json[filenames[i]] = {
       "x": 0,
-      "y": 30 * i,
+      "y": 30*i,
       "width": nep.size[0],
       "height": nep.size[1],
       "pixelRatio": 1,
-      "visible": "true"
+      "visible": True
     }
 print(plt_json)
 
